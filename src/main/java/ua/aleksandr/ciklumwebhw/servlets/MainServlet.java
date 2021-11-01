@@ -24,12 +24,13 @@ public class MainServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getSession().setAttribute("service", service);
         req.getRequestDispatcher("main.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         service.insert(req.getParameter("action"), req.getParameter("input"));
-        resp.sendRedirect("/ciklum/");
+        resp.sendRedirect("/ciklum/hub");
     }
 }

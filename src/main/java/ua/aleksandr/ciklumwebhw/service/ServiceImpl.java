@@ -4,6 +4,7 @@ import ua.aleksandr.ciklumwebhw.dao.DataBaseManager;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.Properties;
 
 public class ServiceImpl implements Service {
@@ -31,6 +32,11 @@ public class ServiceImpl implements Service {
             throw new RuntimeException("Can't get property!", e);
         }
         return manager.connect(database, user, password);
+    }
+
+    @Override
+    public Connection getConnection() {
+        return manager.getConnection();
     }
 
     @Override
