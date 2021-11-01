@@ -11,10 +11,10 @@
 <body>
 <h2>ℭℑ𝔎𝔏𝔘𝔐 𝔴𝔢𝔟 𝔞𝔭𝔭</h2>
 <form action="<%=request.getContextPath()%>/" method="post">
-    <input type="radio" name="action">GET
-    <input type="radio" name="action">GIVE
+    <input type="radio" name="action" value="get" required="required">GET
+    <input type="radio" name="action" value="give" required="required">GIVE
     <p>Enter your data:</p>
-    <input type="text" name="input" placeholder="Anything..."/>
+    <input type="text" name="input" placeholder="Anything..." required="required"/>
     <input type="submit" value="ok"/>
 </form>
 </body>
