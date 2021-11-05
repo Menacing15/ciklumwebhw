@@ -1,10 +1,10 @@
 package ua.aleksandr.ciklumwebhw.servlets;
 
-import ua.aleksandr.ciklumwebhw.dao.DataBaseManager;
-import ua.aleksandr.ciklumwebhw.dao.JDBCManager;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 import ua.aleksandr.ciklumwebhw.service.Service;
-import ua.aleksandr.ciklumwebhw.service.ServiceImpl;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,17 +13,19 @@ import java.io.IOException;
 
 public class MainServlet extends HttpServlet {
 
-    private Service service;
+    @Autowired
+     private Service service;
 
     @Override
-    public void init() throws ServletException {
-        DataBaseManager manager = new JDBCManager();
-        service = new ServiceImpl(manager);
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this, config.getServletContext());
         service.connect();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         req.getSession().setAttribute("service", service);
         req.getRequestDispatcher("main.jsp").forward(req, resp);
     }
@@ -32,5 +34,9 @@ public class MainServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         service.insert(req.getParameter("action"), req.getParameter("input"));
         resp.sendRedirect("/ciklum/hub");
+    }
+
+    public void setService(Service service) {
+        this.service = service;
     }
 }
