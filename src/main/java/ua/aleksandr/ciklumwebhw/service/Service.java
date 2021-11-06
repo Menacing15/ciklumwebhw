@@ -10,4 +10,6 @@ public interface Service {
     Connection getConnection();
 
     void insert(String... input);
+
+    void closeConnection();
 }

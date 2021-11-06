@@ -39,4 +39,9 @@ public class MainServlet extends HttpServlet {
     public void setService(Service service) {
         this.service = service;
     }
+
+    @Override
+    public void destroy() {
+        service.closeConnection();
+    }
 }

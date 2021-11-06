@@ -7,4 +7,5 @@ public interface DataBaseManager {
     boolean isConnected();
     void insertData(String... input);
     Connection getConnection();
+    void closeConnection();
 }

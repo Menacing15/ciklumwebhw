@@ -43,4 +43,9 @@ public class JDBCManager implements DataBaseManager {
     public Connection getConnection() {
         return connection;
     }
+
+    @Override
+    public void closeConnection() {
+        connection = null;
+    }
 }

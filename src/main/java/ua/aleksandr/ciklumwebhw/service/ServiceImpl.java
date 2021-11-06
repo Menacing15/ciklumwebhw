@@ -43,4 +43,9 @@ public class ServiceImpl implements Service {
     public void insert(String... input) {
         manager.insertData(input);
     }
+
+    @Override
+    public void closeConnection() {
+        manager.closeConnection();
+    }
 }
