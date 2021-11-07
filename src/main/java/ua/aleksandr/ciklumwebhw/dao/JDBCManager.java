@@ -1,7 +1,5 @@
 package ua.aleksandr.ciklumwebhw.dao;
 
-import org.springframework.stereotype.Component;
-
 import java.sql.*;
 
 public class JDBCManager implements DataBaseManager {

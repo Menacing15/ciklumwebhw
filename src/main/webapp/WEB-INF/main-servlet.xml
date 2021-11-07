@@ -8,11 +8,10 @@
 
     <context:component-scan base-package = "ua.aleksandr.ciklumwebhw.controller" />
 
-    <mvc:annotation-driven />
-
-    <mvc:resources mapping="/styles/**" location="/styles/" />
-
     <bean id="serviceBean" class="ua.aleksandr.ciklumwebhw.service.ServiceImpl">
+        <constructor-arg value="jdbc:mysql://localhost:3306/ciklumtask"/>
+        <constructor-arg value="ciklumuser"/>
+        <constructor-arg value="1234"/>
         <constructor-arg ref="managerBean"/>
     </bean>
 
@@ -22,4 +21,7 @@
         <property name = "prefix" value = "/view/" />
         <property name = "suffix" value = ".jsp" />
     </bean>
+
+    <mvc:resources mapping="/styles/**" location="/styles/" />
+    <mvc:annotation-driven />
 </beans>

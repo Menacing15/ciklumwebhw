@@ -1,37 +1,26 @@
 package ua.aleksandr.ciklumwebhw.service;
 
-import org.springframework.stereotype.Component;
 import ua.aleksandr.ciklumwebhw.dao.DataBaseManager;
 
-import java.io.FileReader;
-import java.io.IOException;
 import java.sql.Connection;
-import java.util.Properties;
 
 public class ServiceImpl implements Service {
 
     private DataBaseManager manager;
 
-    private Properties properties;
+    private String database;
+    private String user;
+    private String password;
 
-    public ServiceImpl(DataBaseManager manager) {
+    public ServiceImpl(DataBaseManager manager, String database, String user, String password) {
         this.manager = manager;
-        properties = new Properties();
+        this.database = database;
+        this.user = user;
+        this.password = password;
     }
 
     @Override
     public boolean connect() {
-        String database;
-        String user;
-        String password;
-        try (FileReader fileReader = new FileReader("src\\main\\resources\\properties.properties")) {
-            properties.load(fileReader);
-            database = properties.getProperty("database");
-            user = properties.getProperty("user");
-            password = properties.getProperty("password");
-        } catch (IOException e) {
-            throw new RuntimeException("Can't get property!", e);
-        }
         return manager.connect(database, user, password);
     }
 
