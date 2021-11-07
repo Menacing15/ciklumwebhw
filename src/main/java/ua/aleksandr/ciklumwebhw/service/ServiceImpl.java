@@ -1,5 +1,6 @@
 package ua.aleksandr.ciklumwebhw.service;
 
+import org.springframework.stereotype.Component;
 import ua.aleksandr.ciklumwebhw.dao.DataBaseManager;
 
 import java.io.FileReader;

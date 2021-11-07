@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="ua.aleksandr.ciklumwebhw.service.Service" %>
 <%@ page import="java.sql.Statement" %>
@@ -7,7 +8,7 @@
 <html>
 <head>
     <title>♡</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style.css"/>
+    <link href="<c:url value="/styles/style.css" />" rel="stylesheet">
 </head>
 <body>
 <h2>ℭℑ𝔎𝔏𝔘𝔐 𝔴𝔢𝔟 𝔞𝔭𝔭</h2>

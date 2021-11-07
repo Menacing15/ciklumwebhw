@@ -1,5 +1,7 @@
 package ua.aleksandr.ciklumwebhw.dao;
 
+import org.springframework.stereotype.Component;
+
 import java.sql.Connection;
 
 public interface DataBaseManager {
