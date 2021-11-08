@@ -32,13 +32,20 @@ public class JDBCManager implements DataBaseManager {
             query += "'" + s + "',";
         }
         query  = query.substring(0,query.length()-1) + ");" ;
-        System.out.println(query);
-
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException("Can't insert: " + e.getMessage());
         }
+    }
 
+    @Override
+    public Connection getConnection() {
+        return connection;
+    }
+
+    @Override
+    public void closeConnection() {
+        connection = null;
     }
 }
