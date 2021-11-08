@@ -6,9 +6,21 @@
 <%@ page import="java.sql.SQLException" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<style>
+    body {
+        background-image: url(../images/bg.jpg);
+        text-align: center;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
 <head>
     <title>♡</title>
-    <link href="<c:url value="/styles/style.css" />" rel="stylesheet">
 </head>
 <body>
 <h2>ℭℑ𝔎𝔏𝔘𝔐 𝔴𝔢𝔟 𝔞𝔭𝔭</h2>
