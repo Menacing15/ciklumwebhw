@@ -15,10 +15,6 @@
         </param-value>
     </context-param>
 
-    <welcome-file-list>
-        <welcome-file>/welcome.jsp</welcome-file>
-    </welcome-file-list>
-
     <servlet>
         <servlet-name>main</servlet-name>
         <servlet-class>

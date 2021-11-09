@@ -22,6 +22,5 @@
         <property name = "suffix" value = ".jsp" />
     </bean>
 
-    <mvc:resources mapping="/styles/**" location="/styles/" />
     <mvc:annotation-driven />
 </beans>
