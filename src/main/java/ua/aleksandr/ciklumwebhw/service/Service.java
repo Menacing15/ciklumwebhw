@@ -1,6 +1,7 @@
 package ua.aleksandr.ciklumwebhw.service;
 
 import java.sql.Connection;
+import java.util.List;
 
 public interface Service {
 
@@ -11,4 +12,6 @@ public interface Service {
     void insert(String... input);
 
     void closeConnection();
+
+    List<List<String>> getTableData();
 }

@@ -1,6 +1,8 @@
 package ua.aleksandr.ciklumwebhw.dao;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class JDBCManager implements DataBaseManager {
 
@@ -32,7 +34,7 @@ public class JDBCManager implements DataBaseManager {
             query += "'" + s + "',";
         }
         query  = query.substring(0,query.length()-1) + ");" ;
-        try (Statement statement = connection.createStatement()) {
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException("Can't insert: " + e.getMessage());
@@ -47,5 +49,23 @@ public class JDBCManager implements DataBaseManager {
     @Override
     public void closeConnection() {
         connection = null;
+    }
+
+    @Override
+    public List<List<String>> getTableData() {
+        String query = "select * from web";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            List<List<String>> list = new ArrayList<>();
+            ResultSet set = statement.executeQuery(query);
+            while(set.next()) {
+                List<String> row = new ArrayList<>();
+                row.add(set.getString("action"));
+                row.add(set.getString("data"));
+                list.add(row);
+            }
+            return list;
+        } catch (SQLException e) {
+            throw new RuntimeException("Can't insert: " + e.getMessage());
+        }
     }
 }

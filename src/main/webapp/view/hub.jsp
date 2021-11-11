@@ -31,31 +31,24 @@
     <input type="text" name="input" placeholder="Anything..." required="required"/>
     <input type="submit" value="ok"/>
 </form>
-<table>
-    <tr>
-        <td>action</td>
-        <td>data</td>
-    </tr>
-    <%
-        try {
-            String query = "select * from web";
-            Connection conn = ((Service) request.getSession().getAttribute("service")).getConnection();
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-            while (rs.next()) {
-    %>
-    <tr>
-        <td><%=rs.getString("action")%></td>
-        <td><%=rs.getString("data")%></td>
-    </tr>
-    <%
-            }
-            rs.close();
-            stmt.close();
-        } catch (SQLException e) {
 
-        }
-    %>
-</table>
+<c:choose>
+<c:when test="${table == null}">
+    Such table doesn't exist.
+    <br>
+</c:when>
+<c:otherwise>
+    <table>
+        <c:forEach items = "${table}" var = "row">
+            <tr>
+                <c:forEach items = "${row}" var = "element">
+                    <td>${element}</td>
+                </c:forEach>
+            </tr>
+        </c:forEach>
+    </table>
+    <br>
+</c:otherwise>
+</c:choose>
 </body>
 </html>

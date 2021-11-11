@@ -3,6 +3,8 @@ package ua.aleksandr.ciklumwebhw.service;
 import ua.aleksandr.ciklumwebhw.dao.DataBaseManager;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.util.List;
 
 public class ServiceImpl implements Service {
 
@@ -37,5 +39,10 @@ public class ServiceImpl implements Service {
     @Override
     public void closeConnection() {
         manager.closeConnection();
+    }
+
+    @Override
+    public List<List<String>> getTableData() {
+        return manager.getTableData();
     }
 }

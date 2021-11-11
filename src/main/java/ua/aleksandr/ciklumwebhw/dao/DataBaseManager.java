@@ -1,8 +1,8 @@
 package ua.aleksandr.ciklumwebhw.dao;
 
-import org.springframework.stereotype.Component;
-
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.util.List;
 
 public interface DataBaseManager {
     boolean  connect(String database, String user, String password);
@@ -10,4 +10,5 @@ public interface DataBaseManager {
     void insertData(String... input);
     Connection getConnection();
     void closeConnection();
+    List<List<String>> getTableData();
 }
